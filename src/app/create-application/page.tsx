@@ -1,13 +1,20 @@
 "use client";
 
-import { useWizardStore } from "@/lib/store";
 import { Text, Icon, AppImage, Button } from "@/components/ui";
 import { Toaster } from "sonner";
 import { Wizard } from "@/components/wizard/Wizard";
 import Link from "next/link";
+import { useWizardStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
 
 export default function CreateApplicationPage() {
   const { resetMizard } = useWizardStore();
+  const router = useRouter();
+
+  const handleCancel = () => {
+    resetMizard();
+    router.push("/");
+  };
 
   return (
     <div className="h-screen bg-[var(--color-bg-page)] flex flex-col font-[var(--font-family-sans)] overflow-hidden">
@@ -17,7 +24,7 @@ export default function CreateApplicationPage() {
       <header className="flex flex-col bg-white shrink-0 z-10">
         <div className="flex items-center justify-between px-6 py-3">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-3 cursor-pointer">
+            <Link href="/" className="flex items-center gap-3">
               <div className="flex items-center justify-center">
                 <AppImage name="logo" alt="U.S. Dept Defense" width={48} height={48} className="w-12 h-12 object-contain" />
               </div>
@@ -48,12 +55,7 @@ export default function CreateApplicationPage() {
         <div className="flex items-center gap-2">
           <Link href="/" className="text-[var(--color-text-500)] hover:text-[var(--color-text-900)] cursor-pointer">Home</Link>
           <Icon name="arrow-down" className="w-3 h-3 -rotate-90 text-[var(--color-text-400)]" />
-          <Link
-            href="/?tab=My Applications"
-            className="text-[var(--color-text-500)] hover:text-[var(--color-text-900)] cursor-pointer"
-          >
-            My Applications
-          </Link>
+          <span className="text-[var(--color-text-500)] hover:text-[var(--color-text-900)] cursor-pointer">My Applications</span>
           <Icon name="arrow-down" className="w-3 h-3 -rotate-90 text-[var(--color-text-400)]" />
           <span className="font-semibold text-[var(--color-primary-700)]">New Application</span>
         </div>
@@ -72,13 +74,13 @@ export default function CreateApplicationPage() {
                   Complete the multi-step wizard below to apply for your local defense community grant.
                 </Text>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
+              <Button 
+                variant="outline" 
+                size="sm" 
                 className="px-3 py-1.5 font-bold"
-                onClick={resetMizard}
+                onClick={handleCancel}
               >
-                Clear Form
+                Cancel Registration
               </Button>
             </div>
             <Wizard />

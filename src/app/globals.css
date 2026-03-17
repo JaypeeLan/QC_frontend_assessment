@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM - Tailwind v4 @theme tokens
+   Colors, Typography, Spacing, Radius, Shadows
+   ============================================================ */
 @theme {
+
   /* ── FONTS ──────────────────────────────────────────────── */
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --default-font-family: var(--font-family-sans);
 
   /* ── COLORS: PRIMARY (blue scale) ───────────────────────── */
   --color-primary-100: #e8f0fe;
@@ -15,120 +21,211 @@
   --color-primary-800: #002e51;
   --color-primary-900: #001e35;
 
-  /* ── COLORS: SUCCESS (green scale) ──────────────────────── */
-  --color-success-100: #dcfce7;
-  --color-success-200: #bbf7d0;
-  --color-success-500: #22c55e;
-  --color-success-600: #16a34a;
-  --color-success-700: #15803d;
+  /* ── COLORS: TEXT (neutral gray scale) ──────────────────── */
+  --color-text-100: #f5f5f5;
+  --color-text-200: #e5e5e5;
+  --color-text-300: #cbc3e3; /* approx rgba(203, 213, 225, 1) as hex */
+  --color-text-400: #a3a3a3;
+  --color-text-500: #737373;
+  --color-text-600: #525252;
+  --color-text-700: #404040;
+  --color-text-800: #262626;
+  --color-text-900: #171717;
+  --color-text-black: rgba(0, 0, 0, 1);
+  --color-border-slate: rgba(203, 213, 225, 1);
 
   /* ── COLORS: ERROR (red scale) ──────────────────────────── */
   --color-error-100: #fee2e2;
   --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
   --color-error-500: #ef4444;
   --color-error-600: #dc2626;
   --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
 
-  /* ── COLORS: WARNING (amber scale) ──────────────────────── */
-  --color-warning-100: #fef3c7;
-  --color-warning-200: #fde68a;
-  --color-warning-500: #f59e0b;
-  --color-warning-600: #d97706;
+  /* ── COLORS: SUCCESS (green scale) ─────────────────────── */
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
 
-  /* ── COLORS: INFO (sky scale) ───────────────────────────── */
-  --color-info-100: #e0f2fe;
-  --color-info-200: #bae6fd;
-  --color-info-500: #0ea5e9;
-  --color-info-600: #0284c7;
+  /* ── COLORS: WARNING (amber/orange scale) ───────────────── */
+  --color-warning-100: #fff7ed;
+  --color-warning-200: #fed7aa;
+  --color-warning-300: #fdba74;
+  --color-warning-400: #fb923c;
+  --color-warning-500: #f97316;
+  --color-warning-600: #ea580c;
+  --color-warning-700: #c2410c;
+  --color-warning-800: #9a3412;
+  --color-warning-900: #7c2d12;
 
-  /* ── COLORS: TEXT / NEUTRAL (gray scale) ────────────────── */
-  --color-text-50:  #f9fafb;
-  --color-text-100: #f3f4f6;
-  --color-text-200: #e5e7eb;
-  --color-text-300: #d1d5db;
-  --color-text-400: #9ca3af;
-  --color-text-500: #6b7280;
-  --color-text-600: #4b5563;
-  --color-text-700: #374151;
-  --color-text-800: #1f2937;
-  --color-text-900: #111827;
+  /* ── COLORS: INFO (blue scale) ──────────────────────────── */
+  --color-info-100: #eff6ff;
+  --color-info-200: #dbeafe;
+  --color-info-300: #bfdbfe;
+  --color-info-400: #93c5fd;
+  --color-info-500: #60a5fa;
+  --color-info-600: #3b82f6;
+  --color-info-700: #2563eb;
+  --color-info-800: #1d4ed8;
+  --color-info-900: #1e40af;
+
+  /* ── COLORS: ALPHA (semi-transparent gray) ──────────────── */
+  --color-alpha-100: rgba(0, 0, 0, 0.04);
+  --color-alpha-200: rgba(0, 0, 0, 0.08);
+  --color-alpha-300: rgba(0, 0, 0, 0.12);
+  --color-alpha-400: rgba(0, 0, 0, 0.20);
+  --color-alpha-500: rgba(0, 0, 0, 0.30);
+  --color-alpha-600: rgba(0, 0, 0, 0.40);
+  --color-alpha-700: rgba(0, 0, 0, 0.55);
+  --color-alpha-800: rgba(0, 0, 0, 0.70);
+  --color-alpha-900: rgba(0, 0, 0, 0.85);
 
   /* ── COLORS: BACKGROUND ─────────────────────────────────── */
   --color-bg-light: #ffffff;
   --color-bg-dark:  #0a0a0a;
   --color-bg-page: #f8f9fa;
+  --color-bg-blue: #F1F5F9;
 
-  /* ── TYPOGRAPHY: SIZES ───────────────────────────────────── */
-  --text-h1: 2.5rem;    /* 40px */
-  --text-h1--line-height: 3rem;
-  --text-h2: 2rem;      /* 32px */
-  --text-h2--line-height: 2.5rem;
-  --text-h3: 1.75rem;   /* 28px */
-  --text-h3--line-height: 2.25rem;
-  --text-h4: 1.5rem;    /* 24px */
-  --text-h4--line-height: 2rem;
-  --text-h5: 1.125rem;  /* 18px */
-  --text-h5--line-height: 1.75rem;
-  --text-paragraph: 1rem; /* 16px */
-  --text-paragraph--line-height: 1.5rem;
-  --text-small: 0.8125rem; /* 13px */
-  --text-small--line-height: 1.25rem;
+  /* ── COLORS: MISC ───────────────────────────────────────── */
+  --color-misc-white: #ffffff;
 
-  /* ── SPACING ─────────────────────────────────────────────── */
-  --spacing-4: 0.25rem;
-  --spacing-8: 0.5rem;
-  --spacing-12: 0.75rem;
-  --spacing-16: 1rem;
-  --spacing-20: 1.25rem;
-  --spacing-24: 1.5rem;
-  --spacing-32: 2rem;
-  --spacing-40: 2.5rem;
-  --spacing-48: 3rem;
-  --spacing-64: 4rem;
+  /* ── TYPOGRAPHY: font sizes + line heights ──────────────── */
+  --text-h1: 2.5rem;           /* 40px */
+  --text-h1--line-height: 3.25rem; /* 52px */
+  --text-h1--font-weight: 700;
 
-  /* ── BORDER RADIUS ───────────────────────────────────────── */
-  --radius-4: 4px;
-  --radius-6: 6px;
-  --radius-8: 8px;
-  --radius-12: 12px;
-  --radius-16: 16px;
+  --text-h2: 2.0625rem;        /* 33px */
+  --text-h2--line-height: 2.5rem;  /* 40px */
+  --text-h2--font-weight: 700;
+
+  --text-h3: 1.75rem;          /* 28px */
+  --text-h3--line-height: 2.25rem; /* 36px */
+  --text-h3--font-weight: 600;
+
+  --text-h4: 1.4375rem;        /* 23px */
+  --text-h4--line-height: 1.75rem; /* 28px */
+  --text-h4--font-weight: 600;
+
+  --text-h5: 1.1875rem;        /* 19px */
+  --text-h5--line-height: 1.5rem;  /* 24px */
+  --text-h5--font-weight: 600;
+
+  --text-paragraph: 1rem;      /* 16px */
+  --text-paragraph--line-height: 1.5rem; /* 24px */
+  --text-paragraph--font-weight: 400;
+
+  --text-small: 0.8125rem;     /* 13px */
+  --text-small--line-height: 1.25rem; /* 20px */
+  --text-small--font-weight: 400;
+
+  /* ── RADIUS ─────────────────────────────────────────────── */
+  --radius-1:    1px;
+  --radius-4:    4px;
+  --radius-6:    6px;
+  --radius-8:    8px;
+  --radius-12:   12px;
+  --radius-16:   16px;
   --radius-full: 9999px;
 
   /* ── SHADOWS ─────────────────────────────────────────────── */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.16), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
+
+  /* ── SPACING (aligns with 4px base) ─────────────────────── */
+  --spacing-1:  0.25rem;   /* 4px  */
+  --spacing-2:  0.5rem;    /* 8px  */
+  --spacing-3:  0.75rem;   /* 12px */
+  --spacing-4:  1rem;      /* 16px */
+  --spacing-5:  1.25rem;   /* 20px */
+  --spacing-6:  1.5rem;    /* 24px */
+  --spacing-8:  2rem;      /* 32px */
+  --spacing-10: 2.5rem;    /* 40px */
+  --spacing-12: 3rem;      /* 48px */
+  --spacing-16: 4rem;      /* 64px */
 }
 
-/* ── NPROGRESS OVERRIDES ────────────────────────────────── */
-#nprogress .bar {
-  background: #005EA2 !important;
-  height: 3px !important;
-}
-#nprogress .spinner-icon {
-  border-top-color: #005EA2 !important;
-  border-left-color: #005EA2 !important;
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@layer base {
-  *,
-  ::after,
-  ::before {
-    box-sizing: border-box;
-    border-color: var(--color-text-200);
-  }
+html {
+  font-family: var(--font-family-sans);
+}
 
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-900);
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   DARK MODE support
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
   body {
-    background-color: var(--color-bg-page);
-    color: var(--color-text-900);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-100);
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ============================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ============================================================ */
+.text-h1 {
+  font-size: var(--text-h1);
+  line-height: var(--text-h1--line-height);
+  font-weight: var(--text-h1--font-weight);
+  font-family: var(--font-family-sans);
+}
+.text-h2 {
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  font-weight: var(--text-h2--font-weight);
+  font-family: var(--font-family-sans);
+}
+.text-h3 {
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  font-weight: var(--text-h3--font-weight);
+  font-family: var(--font-family-sans);
+}
+.text-h4 {
+  font-size: var(--text-h4);
+  line-height: var(--text-h4--line-height);
+  font-weight: var(--text-h4--font-weight);
+  font-family: var(--font-family-sans);
+}
+.text-h5 {
+  font-size: var(--text-h5);
+  line-height: var(--text-h5--line-height);
+  font-weight: var(--text-h5--font-weight);
+  font-family: var(--font-family-sans);
+}
+.text-paragraph {
+  font-size: var(--text-paragraph);
+  line-height: var(--text-paragraph--line-height);
+  font-weight: var(--text-paragraph--font-weight);
+  font-family: var(--font-family-sans);
+}
+.text-small {
+  font-size: var(--text-small);
+  line-height: var(--text-small--line-height);
+  font-weight: var(--text-small--font-weight);
+  font-family: var(--font-family-sans);
 }
