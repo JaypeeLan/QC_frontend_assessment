@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Badge, Text, Icon, AppImage, H4 } from "@/components/ui";
+import { Text, Icon, AppImage, H4 } from "@/components/ui";
 import { IconName } from "@/components/ui/Icon";
 import { ProfileInformation } from "@/components/profile/ProfileInformation";
 import { MyApplications } from "@/components/profile/MyApplications";
