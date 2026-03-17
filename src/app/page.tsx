@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useState, useEffect, Suspense } from "react";
 import { useWizardStore } from "@/lib/store";
 import { Text, Icon, AppImage, H4 } from "@/components/ui";
 import { IconName } from "@/components/ui/Icon";
@@ -8,9 +9,17 @@ import { ProfileInformation } from "@/components/profile/ProfileInformation";
 import { MyApplications } from "@/components/profile/MyApplications";
 import { Toaster } from "sonner";
 
-export default function ProfilePage() {
+function ProfilePageContent() {
   const { activeTab, setActiveTab } = useWizardStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, [searchParams, setActiveTab]);
 
   const sidebarItems: { label: string; icon: IconName }[] = [
     { label: "Profile Information", icon: "profile-icon" },
@@ -187,5 +196,13 @@ export default function ProfilePage() {
         </main>
       </div>
     </div>
+  );
+}
+
+export default function ProfilePage() {
+  return (
+    <Suspense fallback={<div className="h-screen flex items-center justify-center bg-[var(--color-bg-page)] text-[#1C355E]">Loading...</div>}>
+      <ProfilePageContent />
+    </Suspense>
   );
 }
