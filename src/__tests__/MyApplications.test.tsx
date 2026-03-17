@@ -11,12 +11,14 @@ vi.mock('@/lib/api', () => ({
 
 describe('MyApplications Component', () => {
   beforeEach(() => {
-    // Clear the store before each test
+    // Reset the store to its absolute initial state before each test
     useWizardStore.setState({
+      activeTab: "My Applications",
       step: 1,
       businessDetails: null,
       directors: [],
       applications: [],
+      isCreating: false,
     });
   });
 
@@ -45,11 +47,11 @@ describe('MyApplications Component', () => {
       submittedAt: new Date().toISOString(),
       status: 'pending' as const,
     };
-    
-    useWizardStore.setState({ applications: [mockApp] });
-    
+
+    useWizardStore.setState({ applications: [mockApp], isCreating: false });
+
     render(<MyApplications />);
-    
+
     expect(screen.getByText('Existing Corp')).toBeInTheDocument();
     expect(screen.getByText(/12-3456789/i)).toBeInTheDocument();
     expect(screen.getByText(/pending/i)).toBeInTheDocument();
@@ -58,10 +60,10 @@ describe('MyApplications Component', () => {
   it('should allow canceling registration to return to the list', async () => {
     render(<MyApplications />);
     fireEvent.click(screen.getByText(/Create New Application/i));
-    
+
     expect(screen.getByText(/Cancel Registration/i)).toBeInTheDocument();
     fireEvent.click(screen.getByText(/Cancel Registration/i));
-    
+
     expect(screen.getByText(/No Applications Found/i)).toBeInTheDocument();
   });
 });

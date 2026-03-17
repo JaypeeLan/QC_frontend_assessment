@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { useWizardStore } from "@/lib/store";
 import { Badge, Text, H4, Button, AppImage } from "@/components/ui";
 import { Wizard } from "@/components/wizard/Wizard";
 
 export function MyApplications() {
-  const applications = useWizardStore((s) => s.applications);
-  const [isCreating, setIsCreating] = useState(false);
+  const { applications, isCreating, setIsCreating } = useWizardStore();
 
   if (isCreating) {
     return (

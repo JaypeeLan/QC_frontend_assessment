@@ -8,9 +8,8 @@ import { Step3Review } from "./Step3Review";
 import { H2, Text, Button, Icon } from "@/components/ui";
 
 export function Wizard() {
-  const step = useWizardStore((s) => s.step);
-  const setStep = useWizardStore((s) => s.setStep);
-  const resetMizard = useWizardStore((s) => s.resetMizard);
+  const { step, setStep, setIsCreating, resetMizard } = useWizardStore();
+
   const [isClient, setIsClient] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -34,9 +33,10 @@ export function Wizard() {
           onClick={() => {
             resetMizard();
             setIsComplete(false);
+            setIsCreating(false);
           }}
         >
-          Start New Registration
+          Return to Dashboard
         </Button>
       </div>
     );
@@ -57,10 +57,10 @@ export function Wizard() {
             <div key={s} className="flex flex-col items-center gap-2">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-300 border-2 ${step === s
-                    ? "bg-[var(--color-primary-600)] border-[var(--color-primary-600)] text-white shadow-md shadow-blue-500/20"
-                    : step > s
-                      ? "bg-[var(--color-primary-100)] border-[var(--color-primary-500)] text-[var(--color-primary-700)]"
-                      : "bg-white border-[var(--color-text-300)] text-[var(--color-text-400)]"
+                  ? "bg-[var(--color-primary-600)] border-[var(--color-primary-600)] text-white shadow-md shadow-blue-500/20"
+                  : step > s
+                    ? "bg-[var(--color-primary-100)] border-[var(--color-primary-500)] text-[var(--color-primary-700)]"
+                    : "bg-white border-[var(--color-text-300)] text-[var(--color-text-400)]"
                   }`}
               >
                 {step > s ? (

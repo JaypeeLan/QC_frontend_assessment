@@ -11,12 +11,16 @@ export interface Application extends RegistrationForm {
 }
 
 interface WizardState {
+  activeTab: string;
   step: WizardStep;
   businessDetails: BusinessDetails | null;
   directors: Director[];
   applications: Application[];
+  isCreating: boolean;
   
   // Actions
+  setActiveTab: (tab: string) => void;
+  setIsCreating: (isCreating: boolean) => void;
   setStep: (step: WizardStep) => void;
   setBusinessDetails: (details: BusinessDetails) => void;
   setDirectors: (directors: Director[]) => void;
@@ -27,11 +31,15 @@ interface WizardState {
 export const useWizardStore = create<WizardState>()(
   persist(
     (set) => ({
+      activeTab: "Profile Information",
       step: 1,
       businessDetails: null,
       directors: [],
       applications: [],
+      isCreating: false,
       
+      setActiveTab: (tab) => set({ activeTab: tab }),
+      setIsCreating: (isCreating) => set({ isCreating }),
       setStep: (step) => set({ step }),
       setBusinessDetails: (details) => set({ businessDetails: details }),
       setDirectors: (directors) => set({ directors }),
@@ -46,11 +54,13 @@ export const useWizardStore = create<WizardState>()(
           }
         ]
       })),
-      resetMizard: () => set({ step: 1, businessDetails: null, directors: [] }),
+      resetMizard: () => set({ step: 1, businessDetails: null, directors: [], isCreating: false }),
     }),
     {
       name: "qc-registration-wizard", // unique name for localStorage key
       partialize: (state) => ({ 
+        activeTab: state.activeTab,
+        isCreating: state.isCreating,
         step: state.step, 
         businessDetails: state.businessDetails, 
         directors: state.directors,

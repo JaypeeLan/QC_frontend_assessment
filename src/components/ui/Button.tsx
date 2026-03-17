@@ -21,7 +21,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   ghost:
     "bg-transparent text-[var(--color-text-700)] hover:bg-[var(--color-text-100)] active:bg-[var(--color-text-200)] focus-visible:ring-[var(--color-text-300)]",
   outline:
-    "bg-white border border-[var(--color-text-300)] text-[#005EA2] hover:bg-[var(--color-primary-100)] active:bg-[var(--color-primary-200)] focus-visible:ring-[var(--color-primary-300)] font-bold",
+    "bg-white border border-[#D1D5DB] text-[#374151] hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-[var(--color-primary-300)] font-bold",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useWizardStore } from "@/lib/store";
 import { Text, Icon, AppImage, H4 } from "@/components/ui";
 import { IconName } from "@/components/ui/Icon";
 import { ProfileInformation } from "@/components/profile/ProfileInformation";
@@ -8,7 +9,7 @@ import { MyApplications } from "@/components/profile/MyApplications";
 import { Toaster } from "sonner";
 
 export default function ProfilePage() {
-  const [activeTab, setActiveTab] = useState("Profile Information");
+  const { activeTab, setActiveTab } = useWizardStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const sidebarItems: { label: string; icon: IconName }[] = [
