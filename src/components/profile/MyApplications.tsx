@@ -2,31 +2,10 @@
 
 import { useWizardStore } from "@/lib/store";
 import { Badge, Text, H4, Button, AppImage } from "@/components/ui";
-import { Wizard } from "@/components/wizard/Wizard";
+import Link from "next/link";
 
 export function MyApplications() {
-  const { applications, isCreating, setIsCreating } = useWizardStore();
-
-  if (isCreating) {
-    return (
-      <div className="flex flex-col gap-6 mx-auto w-full items-center">
-        <div className="w-full max-w-4xl text-left mb-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-[length:var(--text-h2)] font-bold text-[#1C355E] leading-tight mb-2">
-              New Business Registration
-            </h1>
-            <Text className="text-[#6B7280]">
-              Complete the multi-step wizard below to apply for your local defense community grant.
-            </Text>
-          </div>
-          <Button variant="outline" size="sm" onClick={() => setIsCreating(false)}>
-            Cancel Registration
-          </Button>
-        </div>
-        <Wizard />
-      </div>
-    );
-  }
+  const { applications } = useWizardStore();
 
   if (applications.length === 0) {
     return (
@@ -36,9 +15,11 @@ export function MyApplications() {
         <Text muted className="max-w-xs text-center mb-8">
           You haven&apos;t submitted any business registration applications yet.
         </Text>
-        <Button variant="primary" onClick={() => setIsCreating(true)}>
-          Create New Application
-        </Button>
+        <Link href="/create-application">
+          <Button variant="primary">
+            Create New Application
+          </Button>
+        </Link>
       </div>
     );
   }
@@ -58,9 +39,11 @@ export function MyApplications() {
           <Badge variant="info" className="px-3 py-1">
             {applications.length} Total
           </Badge>
-          <Button variant="primary" size="sm" onClick={() => setIsCreating(true)}>
-            + New Application
-          </Button>
+          <Link href="/create-application">
+            <Button variant="primary" size="sm">
+              + New Application
+            </Button>
+          </Link>
         </div>
       </div>
 

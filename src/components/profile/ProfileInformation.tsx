@@ -1,17 +1,10 @@
 "use client";
 
 import React from "react";
-import { useWizardStore } from "@/lib/store";
-import { H4, Text, Input, Button, Select, AppImage, Icon } from "@/components/ui";
+import { Text, H4, Button, AppImage, Icon, Input, Select } from "@/components/ui";
+import Link from "next/link";
 
 export function ProfileInformation() {
-    const { setActiveTab, setIsCreating } = useWizardStore();
-
-    const handleStartApplication = () => {
-        setActiveTab("My Applications");
-        setIsCreating(true);
-    };
-
     return (
         <div className="flex flex-col gap-8 w-full max-w-5xl mx-auto px-4 sm:px-0">
             {/* ── PROFILE HEADER CARD ─────────────────────────────────────────────── */}
@@ -121,7 +114,9 @@ export function ProfileInformation() {
                             <Text size="small" className="text-[#6B7280]">Start a new grant application</Text>
                         </div>
                     </div>
-                    <Button variant="primary" size="md" fullWidth className="font-bold bg-[#005EA2] rounded-[var(--radius-8)] py-3" onClick={handleStartApplication}>Start Application</Button>
+                    <Link href="/create-application">
+                        <Button variant="primary" size="md" fullWidth className="font-bold bg-[#005EA2] rounded-[var(--radius-8)] py-3">Start Application</Button>
+                    </Link>
                 </div>
 
                 <div className="bg-white rounded-[var(--radius-12)] border border-[var(--color-text-200)] shadow-[var(--shadow-sm)] p-8 flex flex-col gap-8">
