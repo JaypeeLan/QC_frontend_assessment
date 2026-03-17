@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Business Registration Portal | Government of QC",
-  description:
-    "Official portal for government business registration and assessment. Secure, reliable, and offline-resilient.",
+  title: "OLDCC Business Portal",
+  description: "Official portal for Local Defense Community Cooperation business registration.",
 };
 
 export default function RootLayout({
@@ -20,8 +16,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="antialiased min-h-screen bg-[var(--color-bg-light)] text-[var(--color-text-900)] font-[var(--font-family-sans)]">
+    <html lang="en">
+      <body className={inter.className}>
+        <NextTopLoader
+          color="#005EA2"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #005EA2,0 0 5px #005EA2"
+        />
         {children}
       </body>
     </html>

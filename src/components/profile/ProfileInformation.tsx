@@ -144,8 +144,8 @@ export function ProfileInformation() {
 
             {/* ── BOTTOM ACTIONS ────────────────────────────────────────────────── */}
             <div className="flex justify-end gap-4 mt-4 pb-20">
-                <Button variant="outline" size="md" className="px-10 font-bold text-[#374151] border-[#D1D5DB] hover:bg-gray-50 rounded-[var(--radius-8)]">Cancel Changes</Button>
-                <Button variant="primary" size="md" className="px-10 font-bold bg-[#005EA2] rounded-[var(--radius-8)]">Save Changes</Button>
+                <Button variant="outline" size="lg" className="px-10 font-bold text-[#374151] border-[#D1D5DB] hover:bg-gray-50 rounded-[var(--radius-8)]">Cancel Changes</Button>
+                <Button variant="primary" size="lg" className="px-10 font-bold bg-[#005EA2] rounded-[var(--radius-8)]">Save Changes</Button>
             </div>
         </div>
     );
