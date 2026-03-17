@@ -1,6 +1,6 @@
 "use client";
 
-import { Text, Icon, AppImage } from "@/components/ui";
+import { Text, Icon, AppImage, Button } from "@/components/ui";
 import { Toaster } from "sonner";
 import { Wizard } from "@/components/wizard/Wizard";
 import Link from "next/link";
@@ -65,9 +65,9 @@ export default function CreateApplicationPage() {
                 </Text>
               </div>
               <Link href="/">
-                <button className="inline-flex items-center justify-center font-semibold transition-colors duration-150 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer select-none bg-white border border-[#D1D5DB] text-[#374151] hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-[var(--color-primary-300)] font-bold px-3 py-1.5 text-[var(--text-small)] rounded-[var(--radius-6)] gap-1.5">
+                <Button variant="outline" size="sm" className="px-3 py-1.5 font-bold">
                   Cancel Registration
-                </button>
+                </Button>
               </Link>
             </div>
             <Wizard />
